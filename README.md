@@ -28,7 +28,7 @@ It demonstrates how various **pathfinding algorithms** explore and solve a rando
 - **BFS (Breadth-First Search)**
 - **DFS (Depth-First Search)**
 - **A\* Search Algorithm**
-- **Dijkstra’s Algorithm** *(added and integrated manually)*
+- **Dijkstra’s Algorithm** 
 
 Each algorithm is visualized step-by-step with different colors representing:
 - Start / End nodes  
@@ -53,3 +53,12 @@ python -m venv venv
 venv\Scripts\activate    # Windows
 # or
 source venv/bin/activate # macOS/Linux
+```
+###2. Install dependencies
+```bash
+pip install pygame
+```
+3. Run the visualizer
+```bash
+python main.py
+```
