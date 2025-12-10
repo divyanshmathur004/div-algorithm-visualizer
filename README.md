@@ -1,64 +1,55 @@
 # Algorithm Visualizer
 
-This repository contains an interactive **Algorithm Visualizer** built using Python and Pygame.  
-It demonstrates how various **pathfinding algorithms** explore and solve a randomly generated maze in real time.
+A simple Python application to visualize common algorithms and data structures, including mazes and pathfinding.
 
----
+## Features
+- Visualizes algorithms step-by-step
+- Maze generation and solving
+- Modular UI components
+- Easy to extend with new algorithms
 
-## Project Overview
+## Requirements
+- Python 3.8+
+- Tkinter (usually included with Python)
 
-### 📁 Key Files
-- `main.py` — Entry point of the program  
-- `maze.py` — Maze generation and cell structure  
-- `algorithms.py` — Implementations of BFS, DFS, A* and Dijkstra  
-- `visualizer.py` — Handles rendering, UI logic, solving, and statistics  
-- `ui_components.py` — Buttons, dropdowns, labels, and UI styling  
-- `constants.py` — Centralized colors, settings, and configuration  
-- `pyproject.toml` — Project metadata and dependencies
+## Getting Started
+1. Clone this repository or copy the folder.
+2. Install dependencies (if any):
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Or use `pyproject.toml` with Poetry:
+   ```bash
+   poetry install
+   ```
+3. Run the visualizer:
+   ```bash
+   python main.py
+   ```
 
----
+## File Structure
+- `main.py` — Entry point for the application
+- `algorithms.py` — Algorithm implementations
+- `maze.py` — Maze generation and solving
+- `ui_components.py` — UI elements
+- `visualizer.py` — Visualization logic
+- `constants.py` — App constants
 
-## ✨ Features
+## How to Use
+- Launch the app and select an algorithm to visualize.
+- Watch the step-by-step execution in the UI.
+- Experiment with different mazes and algorithms.
 
-### 🔹 Maze Generation
-- Uses **recursive backtracking**  
-- Produces a perfect maze with a unique solvable path
+## Algorithm Explanations
 
-### 🔹 Pathfinding Algorithms
-- **BFS (Breadth-First Search)**
-- **DFS (Depth-First Search)**
-- **A\* Search Algorithm**
-- **Dijkstra’s Algorithm** 
+### Depth-First Search (DFS)
+DFS explores as far as possible along each branch before backtracking. Imagine walking through a maze and always going forward until you hit a dead end, then stepping back to try a new path. It's good for exploring all possible paths.
 
-Each algorithm is visualized step-by-step with different colors representing:
-- Start / End nodes  
-- Walls  
-- Explored nodes  
-- Visited nodes  
-- Final shortest path  
+### Breadth-First Search (BFS)
+BFS explores all neighbors at the current depth before moving deeper. Think of it as searching level by level, like ripples spreading out in water. BFS is great for finding the shortest path in an unweighted graph or maze.
 
-### 🔹 Interactive Controls
-- Click to place **Start** (green) and **End** (red)  
-- Buttons to **Generate Maze**, **Solve**, **Reset**, **Clear Path**  
-- Dropdown to select algorithms  
-- Real-time **statistics panel** (time taken, nodes visited, path length)
+### A* Search
+A* is a smart pathfinding algorithm that uses both the actual cost to reach a point and an estimate (heuristic) of the cost to reach the goal. It chooses paths that seem promising and usually finds the shortest route quickly. It's like using a map and guessing which roads will get you to your destination fastest.
 
----
-
-## ▶️ How to Run
-
-### 1. Create & activate a virtual environment
-```bash
-python -m venv venv
-venv\Scripts\activate    # Windows
-# or
-source venv/bin/activate # macOS/Linux
-```
-###2. Install dependencies
-```bash
-pip install pygame
-```
-3. Run the visualizer
-```bash
-python main.py
-```
+## License
+MIT
