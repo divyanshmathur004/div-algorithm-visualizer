@@ -150,3 +150,54 @@ class AStar(PathfindingAlgorithm):
                     heapq.heappush(open_set, (f_score, id(neighbor), neighbor))
         
         return False
+    
+
+class Dijkstra(PathfindingAlgorithm):
+    """Dijkstra's Algorithm (uniform-cost search without heuristic)"""
+
+    def solve(self, screen, offset_x, offset_y, cell_size, delay=10):
+        """Find path using Dijkstra's algorithm"""
+        if not self._is_valid_start_end():
+            return False
+
+        self.maze.clear_path()
+
+        start_cell = self._get_start_cell()
+
+        # distance (g-cost) from start
+        dist = {start_cell: 0}
+        parent = {start_cell: None}
+
+        # priority queue: (cost, tie_breaker, cell)
+        open_set = [(0, id(start_cell), start_cell)]
+
+        while open_set:
+            current_cost, _, current = heapq.heappop(open_set)
+
+            # If we've reached the end, reconstruct path
+            if (current.row, current.col) == self.maze.end:
+                self._reconstruct_path(current, parent)
+                return True
+
+            if current.is_visited_search:
+                # Already processed with a better cost
+                continue
+
+            current.is_visited_search = True
+
+            # Visualize progress
+            if delay > 0:
+                self._visualize(screen, offset_x, offset_y, cell_size)
+                pygame.time.delay(delay)
+
+            # Relax edges to neighbors
+            for neighbor in self.maze.get_neighbors_pathfinding(current):
+                new_cost = current_cost + 1   # all edges weight = 1
+
+                if neighbor not in dist or new_cost < dist[neighbor]:
+                    dist[neighbor] = new_cost
+                    parent[neighbor] = current
+                    heapq.heappush(open_set, (new_cost, id(neighbor), neighbor))
+
+        # No path found
+        return False

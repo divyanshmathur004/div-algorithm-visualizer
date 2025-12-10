@@ -8,7 +8,7 @@ import time
 from constants import *
 from ui_components import  Button, Label, Dropdown
 from maze import Maze
-from algorithms import BFS, AStar, DFS
+from algorithms import BFS, AStar, DFS, Dijkstra
 
 
 class UIRenderer:
@@ -35,7 +35,7 @@ class UIRenderer:
         pygame.draw.rect(self.screen, ACCENT_COLOR, (0, panel_height - 3, WINDOW_WIDTH, 3))
         
         # Main title
-        title = self.title_font.render("ALGORITHM VISUALIZER", True, DARK_GRAY)
+        title = self.title_font.render("Div's ALGORITHM VISUALIZER", True, DARK_GRAY)
         subtitle_font = pygame.font.Font(None, 22)
         subtitle = subtitle_font.render("Pathfinding algorithms", True, GRAY)
         
@@ -194,7 +194,7 @@ class MazeVisualizer:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-        pygame.display.set_caption("Algorithm Visualizer")
+        pygame.display.set_caption("Div's Algorithm Visualizer")
         self.clock = pygame.time.Clock()
         
         # Fonts - Modern sizing
@@ -216,7 +216,9 @@ class MazeVisualizer:
         self.algorithms = {
             "BFS Algorithm": BFS(self.maze),
             "DFS Algorithm": DFS(self.maze),
-            "A Star Algorithm": AStar(self.maze)
+            "A Star Algorithm": AStar(self.maze),
+            "Dijkstra Algorithm": Dijkstra(self.maze),
+            
         }
         
         # Statistics
@@ -266,7 +268,7 @@ class MazeVisualizer:
         self.algorithm_label = Label(button_x, dropdown_y - 35, "Select Algorithm:", self.small_font, DARK_GRAY)
         self.algorithm_dropdown = Dropdown(
             button_x, dropdown_y, button_width, button_height,
-            ["BFS Algorithm", "DFS Algorithm", "A Star Algorithm"],
+            ["BFS Algorithm", "DFS Algorithm", "A Star Algorithm", "Dijkstra Algorithm"],
             self.font
         )
 
